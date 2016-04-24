@@ -13,9 +13,12 @@ synch_expect.sh should be editied to suit the remote repo credentials, then it s
 */1 * * * * /path_to_folder/sync_expect.sh
 
 3.) Docker image should be built from the dockerfile by cloning this git (realms_wiki_restrict_domain):
+
     docker build -t "realms-wiki:dockerfile" .
     realms-wiki.json should be editied with the appropriate key and secret from Google API OAuth settings
+    
 Then run the docker image, the cloned wiki folder in step 1 should be mapped to a volume on the docker image
+
     docker run -v /home/user/remote_wiki:/wikidata /home/user/realms_wiki_restrict_domain/realms-wiki.json:/etc/realms-wiki/realms-wiki.json -p 5000:5000 realms-wiki:dockerfile
     
 4.) Login to docker image and edit /home/deploy/realms-wiki/.venv/lib/python2.7/site-packages/realms/modules/auth/oauth/models.py to restrict the domain name for users (Google OAuth is used for this purpose), go to following line:
