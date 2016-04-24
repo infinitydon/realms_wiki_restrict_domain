@@ -1,0 +1,14 @@
+#!/usr/bin/expect
+
+# Expect script to automate the supply of the Git server credentials.
+# Edit the name of the git server in case you are not using github
+
+spawn /home/gbenga/above.wiki/sync.sh
+expect "Username for 'https://github.com':"
+
+#Put Username of the git server below in place of the 'xxxxxxxx'
+send "xxxxxxxx\r"
+expect "Password for 'https://infinitydon@github.com':"
+# Put password of the Git server below as appropriate in place of the 'xxxxxxxx'
+send "xxxxxxxxx\r"
+expect eof
